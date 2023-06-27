@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { robots } from './components/robots';
 import CardList from './components/CardList.js';
 import SearchBar from "./components/SearchBar";
+import './App.css';
 
 class App extends Component {
     // ? como q eu faço state mesmo ein mansho
@@ -24,7 +25,7 @@ class App extends Component {
         })
     return (
         <>
-            <h1 className="text-5xl font-bold text-center p-10">Robofriends</h1>
+            <h1 className="text-6xl font-bold text-center p-10 text-cyan-900">Robofriends</h1>
             <div className="search-bar text-center pb-5">
                 <SearchBar className="text-center" searchChange={this.onSearchChange} />
             </div>
