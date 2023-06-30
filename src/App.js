@@ -4,8 +4,11 @@ import SearchBar from "./components/SearchBar";
 import './App.css';
 import Scroll from './components/Scroll'
 
+// * I actually started learning React by using hooks, but this time I'm following ZTM's tutorial and trying to make sense out of
+// * those class components. So far so good.
+
 class App extends Component {
-    // ? como q eu faço state mesmo ein mansho
+    // ! If anything goes wrong, check this out
     constructor () {
         super()
         this.state = {
@@ -14,6 +17,7 @@ class App extends Component {
         }
     }
 
+    // ? This will only load after everything is rendered
     componentDidMount () {
         fetch('https://jsonplaceholder.typicode.com/users')
         .then(response => response.json())
@@ -21,12 +25,17 @@ class App extends Component {
 
     }
 
+    // * Just a simple onChange function
+
     onSearchChange = (event) => {
         this.setState({ searchfield: event.target.value });
 
     }
 
     render() {
+
+        // Months of codewars experience made me nail the logic on filtering any array
+
         const filteredRobots = this.state.robots.filter(element => {
             return element.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
         })
@@ -39,6 +48,9 @@ class App extends Component {
             <Scroll>
                 <CardList robots={filteredRobots} />
             </Scroll>
+
+            {/* A footer imported from bootstrap with some small modifications to its styles. I'd rather use TailwindCSS tho, it's still a really popular way of doing styles here in Brazil */}
+
             <footer class=" rounded-lg m-4 ">
                 <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
                 <span class="text-sm text-black sm:text-center dark:text-black">© 2023 <a href="https://github.com/lucasknutr" class="hover:underline">Lucas Canuto™</a>. All Rights Reserved.
